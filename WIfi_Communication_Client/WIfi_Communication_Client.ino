@@ -1,5 +1,6 @@
 #include <ESP8266WiFi.h>
 #include <WiFiUdp.h>
+#include <map>
 
 #define pot A0
 // Set WiFi credentials
@@ -13,7 +14,8 @@ IPAddress remote_IP(192,168,4,1);//server adress
 
 
 
-byte MSB, LSB; //pot values in byte
+std::map<String ,byte> Byte_Value; //pot values in byte
+
 char SB='S', EB='E';
 
 void setup() {
@@ -56,15 +58,17 @@ void loop() {
   // Read button
   short int pot_angle = analogRead(pot);
   Serial.println(pot_angle);
-  MSB=byte(pot_angle>>8);
-  LSB=byte(pot_angle&0xff);
- 
+  //opperateur
+  Byte_Value["MSB"]=byte(pot_angle>>8);
+  Byte_Value["LSB"]=byte(pot_angle&0xff);
+  //opperateur
+  
   // Send Packet
   UDP.beginPacket(remote_IP, UDP_PORT);
   //packet of data
   UDP.write(SB);
-  UDP.write(MSB);
-  UDP.write(LSB);
+  UDP.write(Byte_Value["MSB"]);
+  UDP.write(Byte_Value["LSB"]);
   UDP.write(EB);
   //
   UDP.endPacket();

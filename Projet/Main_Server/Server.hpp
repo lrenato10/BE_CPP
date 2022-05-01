@@ -1,6 +1,6 @@
 #include "Client_Server.hpp"
 #include "Byte_Class.hpp" 
-#include <vector>
+#include <map>
 #include <Servo.h>
 
 class Server_Class : public Client_Server {
@@ -9,11 +9,11 @@ class Server_Class : public Client_Server {
     IPAddress local_IP;
     IPAddress gateway;
     IPAddress subnet;//mask
-    Servo servo; // create servo object
+    Servo servo0, servo1, servo2; // create servo object
+    std::map<String, int> Servos_Angle;
     Byte_Class MSB=0;
     Byte_Class LSB=0;
-    int angle=0;
-    short int pot_value;
+    int angle0=0, angle1=0,angle2=0;
 
   public:
       Server_Class(String login, String password, int port, byte octet1, byte octet2, byte octet3, byte octet4) :

@@ -4,13 +4,13 @@
 #include <map>
  
 // Set AP credentials
-#define AP_SSID "Rede"
-#define AP_PASS "senha123"
+#define AP_SSID "MyNetwork"
+#define AP_PASS "password123"
  
 // UDP
 WiFiUDP UDP;
-IPAddress local_IP(192,168,4,1);//server IP
-IPAddress gateway(192,168,4,1);
+IPAddress local_IP(192,168,5,1);//server IP
+IPAddress gateway(192,168,5,1);
 IPAddress subnet(255,255,255,0);//masque
 #define UDP_PORT 4210
 
@@ -42,7 +42,7 @@ void setup() {
   Serial.println("Starting access point...");
   WiFi.softAPConfig(local_IP, gateway, subnet);
   WiFi.softAP(AP_SSID, AP_PASS);
-  Serial.println(WiFi.localIP());
+  Serial.println(WiFi.softAPIP());
  
   // Begin listening to UDP port
   UDP.begin(UDP_PORT);
@@ -67,7 +67,7 @@ void loop() {
     pot_value=(Byte_Value["MSB"]<<8)+Byte_Value["LSB"];
     //opperateur
     
-    angle = map(pot_value, 0, 1023, 0, 180);
+    angle = map(pot_value, 0, 17600, 0, 180);
     Serial.println(pot_value);
     servo.write(angle);
   }

@@ -3,7 +3,7 @@
 #include "Server.hpp"
 
 // UDP
-Server_Class MyServer("Rede","senha123",4210,192, 168, 4, 1);
+Server_Class MyServer("MyNetwork","password123",4210,192, 168, 5, 1);
 
 
 // UDP Buffer
@@ -25,7 +25,7 @@ void setup() {
  
   // Begin Access Point
   MyServer.setUpAP();
- 
+
   // Begin listening to UDP port
   MyServer.beginUDP();
  
@@ -37,8 +37,8 @@ void loop() {
   } catch(int e) {
     if (e==1)
       Serial.println("Error EB!!!!!!!!!!!!!!!!!!!!!");
-    else if (e==2)
-      Serial.println("Error SB!!!!!!!!!!!!!!!!!!!!!");
+    //else if (e==2)
+      //Serial.println("Error SB!!!!!!!!!!!!!!!!!!!!!");
   }
   
   

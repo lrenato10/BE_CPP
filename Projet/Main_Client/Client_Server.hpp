@@ -1,16 +1,13 @@
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
 #include <WiFiUdp.h>
-#include <map>
 
 class Client_Server{
   protected:
       String login_network;
       String password_network;
       int UDP_port;
-      char SB='S';
-      char EB='E';
-      std::map<String ,char> Byte_Value; //pot values in byte      
+      char SB='S', EB='E', P0='A', P1='B',P2='C', P;     
 
   public:
       Client_Server(String login, String password, int port){

@@ -1,4 +1,5 @@
 #include "Client_Server.hpp"
+#include "Byte_Class.hpp" 
 #include <vector>
 #include <Servo.h>
 
@@ -9,6 +10,8 @@ class Server_Class : public Client_Server {
     IPAddress gateway;
     IPAddress subnet;//mask
     Servo servo; // create servo object
+    Byte_Class MSB=0;
+    Byte_Class LSB=0;
     int angle=0;
     short int pot_value;
 

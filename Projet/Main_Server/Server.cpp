@@ -2,6 +2,7 @@
 #define pin_servo0 D5
 #define pin_servo1 D6
 #define pin_servo2 D7
+
 //operator outside of the class
 int operator + (const Byte_Class& msb, const Byte_Class& lsb) {// to concatenate two bytes
   Serial.println((msb.getByte()<<8)+lsb.getByte());
@@ -31,8 +32,6 @@ void Server_Class::receivePacket(){
       throw 2;
     }
   if (SB=='S'){
-    //Byte_Value["MSB"]=UDP.read();
-    //Byte_Value["LSB"]=UDP.read();
     P=UDP.read();
     if (P==P0){
       MSB.setByte(UDP.read());

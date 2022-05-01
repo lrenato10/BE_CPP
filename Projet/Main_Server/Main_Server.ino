@@ -1,46 +1,31 @@
 #include "Server.hpp"
 
-// UDP
+// Set up Server with network name, password, port, remote IP (4 octets)   
 Server_Class MyServer("MyNetwork","password123",4210,192, 168, 5, 1);
 
-
-// UDP Buffer
-char packetBuffer[UDP_TX_PACKET_MAX_SIZE]; //buffer for communication
-
 void setup() {
-
+  
+  // Configure servo motors, serial port, Access point and UDP
+  
   MyServer.servoConfig();
-  
-  // Setup LED pin
-  pinMode(LED_BUILTIN, OUTPUT);
-  
-  // Setup serial port ========== debug
   MyServer.setUpSerialPort(115200);
- 
-  // Begin Access Point
   MyServer.setUpAP();
-
-  // Begin listening to UDP port
   MyServer.beginUDP();
  
 }
  
 void loop() {
+  
+  // Receive continuously UDP packets from client while trying and catching exceptions  
+  
   try {
     MyServer.receivePacket();
+    MyServer.writeMotorAngles();
   } catch(int e) {
     if (e==1)
-      Serial.println("Error EB!!!!!!!!!!!!!!!!!!!!!");
-    //else if (e==2)
-      //Serial.println("Error SB!!!!!!!!!!!!!!!!!!!!!");
+      Serial.println("Did not receive the whole packet");
+    else if (e==2)
+      Serial.println("Loss of communication");
   }
-  
-  
-  if (packetBuffer[0]){
-    digitalWrite(LED_BUILTIN, HIGH);
-    Serial.println("Empty");
-  } else {
-    digitalWrite(LED_BUILTIN, LOW);
-  }      
- 
+  delay(1);
 }

@@ -4,28 +4,34 @@
 
 class Client_Server{
   protected:
-      String login_network;
-      String password_network;
-      int UDP_port;
-      char SB='S', EB='E', P0='A', P1='B',P2='C', P;     
+    // Name of WIFI network
+    String login_network;
+    // Password of WIFI network
+    String password_network;
+    // Port of socket
+    int UDP_port;
+    // Chars used in UDP packet
+    char SB='S', EB='E', P0='A', P1='B',P2='C', P;     
 
   public:
-      Client_Server(String login, String password, int port){
-        login_network = login;
-        password_network = password;
-        UDP_port = port;
-      }
-      void setUpSerialPort(int baud_rate);
+    /**
+     * Contructor of Client_Server Class
+     * @param network name, password, port
+     */ 
+    Client_Server(String login, String password, int port){
+      login_network = login;
+      password_network = password;
+      UDP_port = port;
+    }
+    /**
+    * Configure serial port
+    * @param baund_rate of the communication 
+    */
+    void setUpSerialPort(int baud_rate);
 
-      //gets
-      String getLogin(){
-        return login_network; 
-      }
-      String getPassword(){
-        return password_network; 
-      }
-      int getPort(){
-        return UDP_port; 
-      }
+    // Differents get fonctions 
+    String getLogin();
+    String getPassword();
+    int getPort();
         
 };

@@ -16,7 +16,7 @@ void setup() {
  
 void loop() {
   
-  // Receive continuously UDP packets from client while trying and catching exceptions  
+  // Receive UDP packets from client while trying and catching exceptions every 1 ms 
   
   try {
     MyServer.receivePacket();

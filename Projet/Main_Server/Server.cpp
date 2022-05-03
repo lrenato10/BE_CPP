@@ -7,9 +7,9 @@
  * Operator to concatenate MSB and LSB
  * Operator of Byte_Class outside of this class
  */
-int operator + (const Byte_Class& msb, const Byte_Class& lsb) {// to concatenate two bytes
-  return (msb.getByte()<<8)+lsb.getByte();
-}
+//int operator + (const Byte_Class& msb, const Byte_Class& lsb) {// to concatenate two bytes
+//  return (msb.getByte()<<8)+lsb.getByte();
+//}
 
 /**
  * @brief Configure and start the access point 

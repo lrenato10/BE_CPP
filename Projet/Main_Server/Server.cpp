@@ -4,14 +4,6 @@
 #define pin_servo2 D7
 
 /**
- * Operator to concatenate MSB and LSB
- * Operator of Byte_Class outside of this class
- */
-//int operator + (const Byte_Class& msb, const Byte_Class& lsb) {// to concatenate two bytes
-//  return (msb.getByte()<<8)+lsb.getByte();
-//}
-
-/**
  * @brief Configure and start the access point 
  */
 void Server_Class::setUpAP(){
@@ -22,8 +14,8 @@ void Server_Class::setUpAP(){
 }
 
 /**
-  * @brief Configure UDP port 
-  */
+ * @brief Configure UDP port 
+ */
 void Server_Class::beginUDP(){
   UDP.begin(getPort());
   Serial.print("Listening on UDP port ");
@@ -66,7 +58,7 @@ void Server_Class::receivePacket(){
     if (P==P2){
       MSB.setByte(UDP.read());
       LSB.setByte(UDP.read());
-      Servos_Angle["servo2"] = map(MSB+LSB, 0, 17600, 0, 180);
+      Servos_Angle["servo2"] = map(MSB+LSB, 0, 17600, 180, 0);
     }
   
     P=UDP.read();

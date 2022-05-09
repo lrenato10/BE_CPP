@@ -27,10 +27,10 @@ class Server_Class : public Client_Server {
     short int failure_counter=0;
 
   public:
-   /**
-     * Contructor of Server Class with heritage of  Client_Server Classs
-     * @param network name, password, port, local IP (4 octets), gateway IP, subnet mask 
-     */ 
+     /**
+      * Contructor of Server Class with heritage of  Client_Server Classs
+      * @param network name, password, port, local IP (4 octets), gateway IP, subnet mask 
+      */ 
       Server_Class(String login, String password, int port, byte octet1, byte octet2, byte octet3, byte octet4) :
       Client_Server::Client_Server(login, password, port) , local_IP(octet1, octet2, octet3, octet4),
       gateway(octet1, octet2, octet3, octet4), subnet(255,255,255,0) {};
@@ -57,7 +57,7 @@ class Server_Class : public Client_Server {
       void writeMotorAngles();
 
       /**
-      * @brief Configure servo motors 
-      */
+       * @brief Configure servo motors 
+       */
       void servoConfig();
 };

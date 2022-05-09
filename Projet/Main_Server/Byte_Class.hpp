@@ -9,9 +9,11 @@ class Byte_Class{
       // Value of byte
       char b;
   public:
-      Byte_Class(char b){
-        this->b=b;
-      }
+      /**
+       * Contructor of Byte_Class Class
+       * @param value of byte
+       */
+      Byte_Class(char b);
       char getByte() const;
       void setByte(char value);
 };

@@ -22,10 +22,14 @@ void loop() {
     MyServer.receivePacket();
     MyServer.writeMotorAngles();
   } catch(int e) {
-    if (e==1)
-      Serial.println("Did not receive the whole packet");
-    else if (e==2)
-      Serial.println("Loss of communication");
+    switch(e){
+      case 1:
+        Serial.println("Did not receive the whole packet");
+      case 2:
+        Serial.println("Loss of communication");
+      default:
+        Serial.println("Exception unknown");
+    }
   }
   delay(1);
 }

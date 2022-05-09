@@ -1,6 +1,5 @@
 #include "Client_Server.hpp"
 #include <map>
-#include <Servo.h>
 #include <Adafruit_ADS1X15.h>
 
 class Client_Class : public Client_Server {
@@ -38,8 +37,8 @@ class Client_Class : public Client_Server {
     void setUpWIFI();
     
     /**
-    * @brief Configure UDP port 
-    */
+     * @brief Configure UDP port 
+     */
     void beginUDP();
     
     /**

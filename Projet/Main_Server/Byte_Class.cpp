@@ -1,6 +1,14 @@
 #include "Byte_Class.hpp" 
 #include <Arduino.h>
 
+/**
+ * Contructor of Byte_Class Class
+ * @param value of byte
+ */
+Byte_Class::Byte_Class(char b){
+  this->b=b;
+}
+
 char Byte_Class::getByte() const{
   return b;
 }

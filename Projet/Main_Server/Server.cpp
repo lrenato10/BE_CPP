@@ -46,19 +46,19 @@ void Server_Class::receivePacket(){
       LSB.setByte(UDP.read());
       
       // Opperateur (MSB+LSB) = concatenate most significant byte with less significant byte
-      Servos_Angle["servo0"] = map(MSB+LSB, 0, 17600, 0, 180);//STL map of angle and arduino map to convert the value of potentiometer in angle
+      Servos_Angle["servo0"] = map(MSB+LSB, 9800, 16000, 180, 0);//STL map of angle and arduino map to convert the value of potentiometer in angle, the second and third parameter is the potentiometer range.
     }
     P=UDP.read();
     if (P==P1){
       MSB.setByte(UDP.read());
       LSB.setByte(UDP.read());
-      Servos_Angle["servo1"] = map(MSB+LSB, 0, 17600, 0, 180);
+      Servos_Angle["servo1"] = map(MSB+LSB, 5600, 13000, 0, 180);
     }
     P=UDP.read();
     if (P==P2){
       MSB.setByte(UDP.read());
       LSB.setByte(UDP.read());
-      Servos_Angle["servo2"] = map(MSB+LSB, 0, 17600, 180, 0);
+      Servos_Angle["servo2"] = map(MSB+LSB, 11000, 17600, 180, 0);
     }
   
     P=UDP.read();
